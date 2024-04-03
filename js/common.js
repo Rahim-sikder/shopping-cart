@@ -26,6 +26,11 @@ function getTextElementValueById (elementId){
 
 };
 
+ function setTextElementValueById (elementId,value){
+       const subTotalElement = document.getElementById(elementId);
+       subTotalElement.innerText = value;
+}
+
 // calculate sub-total
 function calculateSubTotal(){
    //   calculate total
@@ -33,7 +38,14 @@ function calculateSubTotal(){
    const currentCaseTotal = getTextElementValueById('case-total');
 
    const currentSubTotal = currentPhoneTotal + currentCaseTotal;
-   const subTotalElement = document.getElementById('sub-total');
-   subTotalElement.innerText = currentSubTotal;
+   setTextElementValueById('sub-total', currentSubTotal);
 
+   // calculate Tax 
+   const taxAmountString = (currentSubTotal * 0.1).toFixed(2);
+   const taxAmount = parseFloat(taxAmountString);
+   setTextElementValueById ('tax-amount',taxAmount);
+
+   // final Amount
+   const finalAmount = currentSubTotal + taxAmount;
+   setTextElementValueById ('final-total', finalAmount);
 };
