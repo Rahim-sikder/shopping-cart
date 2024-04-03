@@ -13,5 +13,27 @@ function updateCaseNumber(isIncrease){
 
    
    caseNumberField.value = newCaseNumber;
-   return newCaseNumber
-}
+   return newCaseNumber;
+};
+
+
+
+function getTextElementValueById (elementId){
+   const phoneTotalElement = document.getElementById(elementId);
+   const currentPhoneTotalString = phoneTotalElement.innerText;
+   const currentPhoneTotal = parseInt (currentPhoneTotalString);
+   return currentPhoneTotal;
+
+};
+
+// calculate sub-total
+function calculateSubTotal(){
+   //   calculate total
+   const currentPhoneTotal = getTextElementValueById ('phone-total');
+   const currentCaseTotal = getTextElementValueById('case-total');
+
+   const currentSubTotal = currentPhoneTotal + currentCaseTotal;
+   const subTotalElement = document.getElementById('sub-total');
+   subTotalElement.innerText = currentSubTotal;
+
+};

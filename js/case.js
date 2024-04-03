@@ -2,17 +2,19 @@
 function updateCaseTotalPrice (newCaseNumber){
       
    const caseTotalPrice = newCaseNumber * 56;
-   const caseTotalaElement = document.getElementById('case-total');
-   caseTotalaElement.innerText = caseTotalPrice;
+   const caseTotalElement = document.getElementById('case-total');
+   caseTotalElement.innerText = caseTotalPrice;
 }
 
 
 document.getElementById('btn-case-plus').addEventListener('click',function(){
-        updateCaseNumber(true);
-        updateCaseTotalPrice (newCaseNumber)
+        const newCaseNumber = updateCaseNumber(true);
+        updateCaseTotalPrice(newCaseNumber);
+        calculateSubTotal();
 });
 
 document.getElementById('btn-case-minus').addEventListener('click', function(){
-      updateCaseNumber(false);
-      updateCaseTotalPrice (newCaseNumber)
+     const newCaseNumber  = updateCaseNumber(false);
+      updateCaseTotalPrice(newCaseNumber);
+      calculateSubTotal();
   });
